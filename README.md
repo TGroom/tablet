@@ -5,18 +5,7 @@ This package interfaces with ROS to allow communication and control through a lo
 
 ## Installation
 
-Follow the tutorial [here](https://industrial-training-master.readthedocs.io/en/melodic/_source/session1/Installing-Existing-Packages.html#download-and-build-a-package-from-source) about downloading and building a package from github or follow the steps below:
-
-1\. Clone tablet_interface from github into your workspace:
-`cd ~/catkin_ws/src`
-`git clone https://github.com/---/---/git`
-
-2\. Then in your workspace directory run:
-`catkin build`
-
-3\. Finally re-source your workspace using the following command:
-`source ~/catkin_ws/devel/setup.bash`
-
+Follow the tutorial [here](https://industrial-training-master.readthedocs.io/en/melodic/_source/session1/Installing-Existing-Packages.html#download-and-build-a-package-from-source) about downloading and building a package from github.
 Before use, you also have to install Rosbridge if you have not done so already. I recommend following the installation guide [here](http://wiki.ros.org/rosbridge_suite). 
 
 ## Usage
