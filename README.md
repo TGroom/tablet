@@ -39,7 +39,7 @@ The last 4 digit number on this line is the Robridge WebSocket port. The default
 
 Once both Rosbridge and the server are up and running, you can connect the web page to Rosbridge by entering the WebSocket ip address and clicking 'connect' on either the 'Control Pannel' or 'Tablet Interface' webpages . The WebSocket ip address will look like `ws://<your ip address>:<Rosbridge port>`. An example is shown below:
 
-![ ](Header_Bar.png  "Connection Interface")
+![Connection Interface](https://github.com/TGroom/tablet_interface/blob/master/Header_Bar.png)
 
 If errors occur please refer to the 'Troubleshooting' section in this README.
 
