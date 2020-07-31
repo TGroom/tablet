@@ -1,0 +1,5 @@
+<launch>
+<node pkg="tablet" name="pyserver" type="pyserver.py" output="screen">
+</node>
+
+</launch>

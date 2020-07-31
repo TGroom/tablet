@@ -1,0 +1,162 @@
+
+html, body { height: 100%; }
+
+
+body {
+  background-color: #ffffff;
+  color: #000000;
+  font-size: 15px; 
+}
+
+footer {
+  background-color: #2C2C2C;
+  color: #ffffff;
+  padding: 15px;
+  clear: both;
+  position: relative;
+  margin-top: 0px;
+}
+
+.top{
+	background-color: #1C1C1C;
+	padding: 10px;
+	color: #ffffff;
+}
+
+.container-fluid{
+	/*background-color: #3C3C3C;*/
+	padding: 10px;
+	padding-left: 15px;
+	padding-right: 0px;
+}
+
+
+.table {
+    table-layout: auto;
+}
+
+.table td, .table th {
+  white-space: nowrap;
+  color: #000000;
+}
+
+.table thead th:last-child {
+  width: 100%; 
+
+}
+.well {
+	border-radius: 0px;
+	padding: 0px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	color: #000000;
+}
+
+textarea { 
+	font-size: 15px; 
+}
+
+#grad1 {
+  width: 100%;
+  background-color: #ffffff;
+  background-image: linear-gradient(145deg, #9fb8ad 0%, #1fc8db 50%, #2cb5e8 75%);
+  color: white;
+  opacity: 1;
+}
+
+#gradBlue {
+	width: 100%;
+  background-color: #ffffff;
+  background-image: linear-gradient(145deg, #0C40d7 20%, #303090 100%);
+  color: white;
+  opacity: 0.9;
+  border: none;
+}
+
+#gradGreen {
+	width: 100%;
+  background-color: #ffffff;
+  background-image: linear-gradient(145deg, #40d70C 20%, #309030 100%);
+  color: white;
+  opacity: 0.9;
+  border: none;
+}
+
+#gradRed {
+	width: 100%;
+  background-color: #ffffff;
+  background-image: linear-gradient(145deg, #d7400C 20%, #903030 100%);
+  color: white;
+  opacity: 0.9;
+  border: none;
+}
+
+h1	{
+	font-size: 70px;
+}
+
+h2{
+	font-size: 50px;
+}
+
+button	{
+	border: none;
+}
+
+.optionBox {
+
+  position: relative;
+  padding-left: 55px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-size: 25px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.optionBox input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 38px;
+  width: 38px;
+  background-color: #eee;
+  border-radius: 50%;
+}
+
+.optionBox:hover input ~ .checkmark {
+  background-color: #bbb;
+}
+
+.optionBox input:checked ~ .checkmark {
+  background-color: #5cb85c;
+}
+
+.optionBox:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+#grad2 {
+  width: 100%;
+  background-color: #ffffff;
+  background-image: linear-gradient(160deg, #3C3C3C 0%,  #1C1C1C 75%);
+  color: white;
+  opacity: 1;
+  border: none;
+}
+
+.content{
+  min-height: 100%;
+  height: auto !important;
+  height: 100%;
+}

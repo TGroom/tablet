@@ -1,0 +1,12 @@
+#goal         
+string question_text
+bool yes_no
+bool options
+string[] list_of_options
+bool text
+---
+#result
+string answer
+---
+#feedback
+float64 percentage

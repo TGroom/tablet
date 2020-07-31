@@ -1,0 +1,8 @@
+#goal
+int32 order
+---
+#result
+int64 count
+---
+#feedback
+float64 percentage

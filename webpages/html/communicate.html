@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+   crossorigin="anonymous">
+  <script type="text/javascript" src="https://static.robotwebtools.org/roslibjs/current/roslib.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" type="text/css" href="../css/styles.css">
+
+  <style type="text/css">
+  .well {
+    padding-top: 50px;
+  }
+  .controlBtn {
+    float: right;
+    border-color: transparent;
+    box-shadow:none;
+    outline:0px;
+    padding:0px;
+    font-size:30px
+  }
+  </style>
+  <title>ROS Web Control</title>
+</head>
+
+<body>
+  <div id="app">
+    <div class="top" v-if="expanded==true">
+      <div class="row">
+        <div class="col-sm-5">
+          <h3 >ROS Web Control</h3>
+        </div>
+        <div class="col-sm-4">
+          <input id="addressInput" class="form-control" type="text" v-model="ws_address"  placeholder="ws://198.51.100.173:9090" />
+        </div>
+        <div class="col-sm-3">
+          <button :disabled="loading" @click="connect" class="btn btn-success btn-block" v-if="!connected">Connect</button>
+          <button :disabled="loading" @click="disconnect" class="btn btn-dark btn-block" v-else>Disconnect</button>
+        </div>
+      </div>
+    </div>
+    
+   <button @click="expand()" class="btn btn-light btn-sm controlBtn" v-if="expanded==true"><i class="material-icons">expand_less</i></button>
+    <button @click="expand()" class="btn btn-light btn-sm controlBtn" v-else><i class="material-icons">expand_more</i></button>
+
+    <div  class="container-fluid">
+      <div  class="row container-fluid " >
+        <div class="col-sm-12 text-center" style="padding: 30px">
+          <h2 id="question"></h2>
+
+          <div class="row well" v-if="questionType=='yes/no'">
+            <div class="col-sm-6" style="padding-right: 40px; padding-left: 40px;">
+              <button id="gradGreen" style="height: 250px;" class="btn btn-dark btn-block btn-lg" @click="response('yes')"><h1><b>YES</b></h1></button>
+            </div>
+            <div class="col-sm-6" style="padding-left: 40px; padding-right: 40px;">
+              <button id="gradRed" style="height: 250px;" class="btn btn-dark btn-block btn-lg" @click="response('no')"><h1><b>NO</b></h1></button>
+            </div>
+          </div>
+
+          <div class="row well" v-else-if="questionType=='options'">
+            <div id="optionsLoop" class="col-sm text-center" v-for="(item, index) in optionsList">
+                <label class="radio-inline optionBox">
+                  <input type="radio" name="radio" checked="checked">{{item}}<span class="checkmark"></span>
+                </label>
+            </div>
+          </div>
+
+          <div class="row well" v-else-if="questionType=='text'">
+            <div class="col-sm-12 text-center">
+              <textarea class="col-sm-11" id="response" rows="5" style="font-size: 35px;"></textarea>
+            </div>
+          </div>
+          <div class="col-sm-12 text-center" style="padding-left: 250px; padding-right: 250px; padding-top: 40px;" v-if="questionType=='options' || questionType=='text'">
+            <button id="gradGreen" style="height: auto;" class="btn btn-dark btn-block btn-lg" @click="response(questionType)"><h3><b>Submit</b></h3></button>
+          </div>
+
+        </div> 
+      </div>
+    </div>
+</div>
+</body>
+<script type="text/javascript" src="../js/communicate.js"></script>
+</html>

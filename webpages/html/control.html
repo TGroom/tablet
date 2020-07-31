@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+   crossorigin="anonymous">
+  <script type="text/javascript" src="https://static.robotwebtools.org/roslibjs/current/roslib.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+
+  <link rel="stylesheet" type="text/css" href="../css/styles.css">
+
+  <title>ROS Web Control</title>
+</head>
+
+<body >
+  <div id="app">
+    <div class="top">
+      <div class="row">
+        <div class="col-sm-5">
+          <h3>ROS Web Control</h3>
+        </div>
+        <div class="col-sm-4">
+          <input class="form-control" type="text" v-model="ws_address"  placeholder="ws://198.51.100.173:9090" />
+        </div>
+        <div class="col-sm-3">
+          <button :disabled="loading" @click="connect" class="btn btn-success btn-block" v-if="!connected">Connect</button>
+          <button :disabled="loading" @click="disconnect" class="btn btn-dark btn-block" v-else>Disconnect</button>
+        </div>
+      </div>
+    </div>
+    <div  class="container-fluid">
+
+      <div class="row container-fluid">
+        <div class="col-sm-6"  style="padding-right: 20px">
+          <div class="row well">
+            <div class="col-sm-7">
+              <select class="form-control" :disabled="loading || !connected" id='subList' name='subList' placeholder="Pick a Topic..." data-width="auto"></select>
+            </div>
+            <div class="col-sm-5 text-right">
+              <button @click="sub2Topic" :disabled="loading || !connected" class="btn btn-light" v-if="!subscribed">Subscribe</button>
+              <button @click="sub2Topic" :disabled="loading || !connected" class="btn btn-dark" v-else>Unsubscribe</button>
+            </div>
+          </div>
+        </div> 
+
+        <div class="col-sm-6" style="padding-left: 20px">
+          <div class="row well">
+
+            <div class="col-sm-4 text-left">
+              <select class="form-control" :disabled="loading || !connected"  @change="selectEvent" v-model="topicType" id='pubList' name='pubList' placeholder="Pick a Topic..." data-width="auto"></select>
+              <!--<input class="form-control" type="text" v-model="topicName" v-on:click.stop="update" placeholder="Topic..." />-->
+            </div>
+            <div class="col-sm-4 text-left">
+              <input class="form-control" type="text" v-model="topicType" :disabled="true" placeholder="Data type..."/>
+
+            </div>
+            <div class="col-sm-4 text-right">
+              <button @click="pub2Topic(JSON.parse(document.getElementById('data2pub').value))" :disabled="loading || !connected" class="btn btn-light">Publish</button>
+
+            </div>
+          </div>
+        </div>
+        <textarea class="col-sm-6" disabled="true" id="topicData" rows="18"></textarea>
+        <textarea class="col-sm-6" :disabled="loading || !connected" id="data2pub" rows="18"></textarea>
+      </div>
+      <div class="row container-fluid">
+        <div class="col-sm-12">
+          <div class="row well">
+            <div class="col-sm-4 text-right" style="padding-left: 20px">
+              <select class="form-control" :disabled="loading || !connected" id='cameraList' name='cameraList' data-width="auto"></select>
+            </div>
+            <div class="col-sm-7 text-right">
+              <button @click="sub2Video"  :disabled="loading || !connected" class="btn btn-light" v-if="!videoActive" >On</button>
+              <button @click="sub2Video"  :disabled="loading || !connected" class="btn btn-dark" v-else>Off</button>
+            </div>
+            <div class="col-sm-12 text-left">
+              <br>
+              <img id="frame" src="" v-if="videoActive"/>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer>
+      <h3>Log Messages</h3>
+      <div>
+        <p id="rosoutData"></p>
+      </div>
+    </footer>
+  </div>
+<script type="text/javascript" src="../js/dict.js"></script>
+<script type="text/javascript" src="../js/control.js"></script>
+</body>
+</html>
